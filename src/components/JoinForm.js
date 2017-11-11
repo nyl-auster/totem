@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import Layout from "../components/Layout";
-import { Router, Route, Switch, Link } from "react-router-dom";
-import messages from "../data/messages";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 class JoinForm extends Component {

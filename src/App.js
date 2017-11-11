@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import Layout from "./components/Layout";
 import DiscussionPage from "./pages/DiscussionPage";
 import InvitePage from "./pages/InvitePage";
 import HomePage from "./pages/HomePage";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {
   render() {

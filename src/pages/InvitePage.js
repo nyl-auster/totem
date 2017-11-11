@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import Layout from "../components/Layout";
 import JoinForm from "../components/JoinForm";
-import { Router, Route, Switch, Link } from "react-router-dom";
-import messages from "../data/messages";
 
 const style = {
   background: "url('/totem-2.png') no-repeat center  bottom",

@@ -1,5 +1,4 @@
 import React from "react";
-import Subject from "./Subject";
 import { Link } from "react-router-dom";
 
 const Header = () => (
