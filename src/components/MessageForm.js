@@ -9,20 +9,26 @@ class MessageForm extends React.Component {
       message: ""
     };
   }
+  sendMessage(message) {
+    console.log(this.props.socket);
+    this.props.socket.emit("message", message);
+  }
+
   handleChange(event) {
     this.setState({
       count: this.countMax - event.target.value.length,
       message: event.target.value
     });
   }
-  handleClick = event => {
+  handleClick(event) {
+    this.sendMessage(this.state.message);
     this.setState(function(prevState, props) {
       return {
         message: "",
         count: this.countMax
       };
     });
-  };
+  }
   render() {
     let buttonAttributes = {};
     if (this.state.count < 0) {
@@ -45,7 +51,7 @@ class MessageForm extends React.Component {
         <div className="control">
           <button
             {...buttonAttributes}
-            onClick={() => this.handleClick()}
+            onClick={this.handleClick.bind(this)}
             className="button is-primary"
           >
             Envoyer

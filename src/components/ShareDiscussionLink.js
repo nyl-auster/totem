@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const ShareDiscussionLink = ({ discussionId }) => {
   const path = `/invite/${discussionId}`;
   return (
-    <div>
+    <div className="has-text-centered">
       <em>
         <a href={path}>https://totem.now.sh{path}</a>
       </em>

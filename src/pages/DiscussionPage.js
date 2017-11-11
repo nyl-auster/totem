@@ -10,20 +10,13 @@ class DiscussionPage extends Component {
   render() {
     const discussionId = this.props.match.params.discussionId;
     return (
-      <Layout
-        content={
-          <div className="discussion">
-            <ShareDiscussionLink discussionId={discussionId} />
-            <MessageList messages={messages} />
-            <MessageForm />
-          </div>
-        }
-        columnRight={
-          <div>
-            <RendezVous />
-          </div>
-        }
-      />
+      <Layout>
+        <div style={{ maxWidth: "800px", margin: "auto" }}>
+          <ShareDiscussionLink discussionId={discussionId} />
+          <MessageList messages={messages} />
+          <MessageForm />
+        </div>
+      </Layout>
     );
   }
 }

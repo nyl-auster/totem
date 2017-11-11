@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 class JoinForm extends Component {
   renderEmailField() {
     return (
-      <div class="field">
+      <div className="field">
         <div className="control has-icons-left has-icons-right">
           <input className="input is-large" type="email" placeholder="Email" />
           <span className="icon is-left">
@@ -34,16 +34,14 @@ class JoinForm extends Component {
     return (
       <div className="has-text-centered">
         <div style={{ width: "400px" }} className="container">
-          <p>
-            {!invite ? this.renderEmailField() : ""}
-            {this.renderPseudoField()}
-            <br />
-            <Link to={`/discussion/${discussionId}`}>
-              <div style={{ fontSize: "1.6rem" }} className="button is-primary">
-                {invite ? "REJOINDRE LE TOTEM" : "LANCER UN TOTEM"}
-              </div>
-            </Link>
-          </p>
+          {!invite ? this.renderEmailField() : ""}
+          {this.renderPseudoField()}
+          <br />
+          <Link to={`/discussion/${discussionId}`}>
+            <div style={{ fontSize: "1.6rem" }} className="button is-primary">
+              {invite ? "REJOINDRE LE TOTEM" : "LANCER UN TOTEM"}
+            </div>
+          </Link>
         </div>
       </div>
     );
