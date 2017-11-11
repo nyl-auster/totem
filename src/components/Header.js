@@ -7,7 +7,7 @@ const Header = () => (
       <div class="container has-text-centered">
         <h1 class="title">TOTEM</h1>
         <h2 class="subtitle">Restez focus</h2>
-        <Subject />
+        {/* <Subject /> */}
       </div>
     </div>
   </section>

@@ -11,7 +11,7 @@ class MessageForm extends React.Component {
   }
   handleChange(event) {
     this.setState({
-      count: this.state.count - 1,
+      count: this.countMax - event.target.value.length,
       message: event.target.value
     });
   }
@@ -31,6 +31,7 @@ class MessageForm extends React.Component {
       <div className="section">
         <div>Nombre de caractères restant: {this.state.count}</div>
         <textarea
+          maxLength={this.countMax}
           value={this.state.message}
           onChange={this.handleChange.bind(this)}
           className="textarea"
