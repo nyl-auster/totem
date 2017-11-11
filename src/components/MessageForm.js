@@ -29,9 +29,13 @@ class MessageForm extends React.Component {
     }
     return (
       <div className="section">
-        <div>Nombre de caractères restant: {this.state.count}</div>
+        <div>
+          Nombre de caractères restant:{" "}
+          <span style={{ color: this.state.count < 0 ? "red" : "inherit" }}>
+            {this.state.count}
+          </span>
+        </div>
         <textarea
-          maxLength={this.countMax}
           value={this.state.message}
           onChange={this.handleChange.bind(this)}
           className="textarea"
