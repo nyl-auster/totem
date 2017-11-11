@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Layout from "../components/Layout";
 import JoinForm from "../components/JoinForm";
 import { Router, Route, Switch, Link } from "react-router-dom";
-import { generateRandomId } from "../lib/totem";
 import messages from "../data/messages";
 
 const style = {
@@ -11,20 +10,18 @@ const style = {
   color: "white !important"
 };
 
-class HomePage extends Component {
+class InvitePage extends Component {
   render() {
+    const discussionId = this.props.match.params.discussionId;
     return (
       <div style={style}>
-        <h1
-          style={{ fontSize: "7rem" }}
-          className="title is-1 has-text-centered"
-        >
-          TOTEM
+        <h1 className="section title is-1 has-text-centered">
+          Rejoindre un Totem en cours
         </h1>
-        <JoinForm discussionId={generateRandomId()} />
+        <JoinForm invite="true" discussionId={discussionId} />
       </div>
     );
   }
 }
 
-export default HomePage;
+export default InvitePage;
