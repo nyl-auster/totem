@@ -16,6 +16,23 @@ class JoinForm extends Component {
     );
   }
 
+  renderSubjectField() {
+    return (
+      <div className="field">
+        <div className="control has-icons-left has-icons-right">
+          <input
+            className="input is-large"
+            type="text"
+            placeholder="Sujet de la discussion"
+          />
+          <span className="icon is-left">
+            <i className="fa fa-pencil" />
+          </span>
+        </div>
+      </div>
+    );
+  }
+
   renderPseudoField() {
     return (
       <div className="field">
@@ -36,6 +53,7 @@ class JoinForm extends Component {
         <div style={{ width: "400px" }} className="container">
           {!invite ? this.renderEmailField() : ""}
           {this.renderPseudoField()}
+          {!invite ? this.renderSubjectField() : ""}
           <br />
           <Link to={`/discussion/${discussionId}`}>
             <div style={{ fontSize: "1.6rem" }} className="button is-primary">
