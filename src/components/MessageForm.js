@@ -3,25 +3,47 @@ import React from "react";
 class MessageForm extends React.Component {
   constructor(props) {
     super(props);
+    this.countMax = 200;
     this.state = {
-      count: 280
+      count: this.countMax,
+      message: ""
     };
   }
-  handleChange = e => {
+  handleChange(event) {
+    this.setState({
+      count: this.state.count - 1,
+      message: event.target.value
+    });
+  }
+  handleClick = event => {
     this.setState(function(prevState, props) {
       return {
-        count: prevState.count - 1
+        count: this.countMax
       };
     });
   };
   render() {
+    let buttonAttributes = {};
+    if (this.state.count < 0) {
+      buttonAttributes.disabled = true;
+    }
     return (
       <div className="section">
-        <div>Characters left : {this.state.count}</div>
-        <textarea onChange={e => this.handleChange(e)} className="textarea" />
+        <div>Nombre de caractères restant: {this.state.count}</div>
+        <textarea
+          value={this.state.message}
+          onChange={this.handleChange.bind(this)}
+          className="textarea"
+        />
         <br />
         <div className="control">
-          <button className="button is-primary">Envoyer</button>
+          <button
+            {...buttonAttributes}
+            onClick={() => this.handleClick()}
+            className="button is-primary"
+          >
+            Envoyer
+          </button>
         </div>
       </div>
     );
