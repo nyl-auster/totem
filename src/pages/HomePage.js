@@ -16,15 +16,19 @@ class HomePage extends Component {
         <h1 className="title is-1">TOTEM</h1>
         <div style={{ width: "300px" }} className="container">
           <div class="field">
-            <label class="label">Votre email</label>
-            <div class="control">
-              <input class="input" type="email" />
+            <div class="control has-icons-left has-icons-right">
+              <input class="input is-large" type="email" placeholder="Email" />
+              <span class="icon is-left">
+                <i class="fa fa-envelope" />
+              </span>
             </div>
           </div>
           <div class="field">
-            <label class="label">Votre pseudo</label>
-            <div class="control">
-              <input class="input" type="text" />
+            <div class="control has-icons-left has-icons-right">
+              <input class="input is-large" type="text" placeholder="pseudo" />
+              <span class="icon is-left">
+                <i class="fa fa-user" />
+              </span>
             </div>
           </div>
           <p>

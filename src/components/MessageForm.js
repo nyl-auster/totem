@@ -18,6 +18,7 @@ class MessageForm extends React.Component {
   handleClick = event => {
     this.setState(function(prevState, props) {
       return {
+        message: "",
         count: this.countMax
       };
     });
