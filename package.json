@@ -15,10 +15,7 @@
   },
   "scripts": {
     "start": "npm run start-react",
-    "start-which-was-supposed-to-work":
-      "npm run start-node & npm run start-react",
     "start-react": "react-scripts start",
-    "start-node": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
