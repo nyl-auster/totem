@@ -19,19 +19,23 @@ class Chat extends Component {
 
     // Listen for messages from the server
     this.socket.on("server:message", message => {
-      console.log(message);
+      console.log("server:message", message);
+      this.addMessage(message);
     });
   }
-  sendMessage(message) {
-    this.socket.emit("client:message", message);
+  addMessage(message) {
     this.setState((prevState, props) => {
       return {
         messages: [...prevState.messages, message]
       };
     });
   }
+  sendMessage(message) {
+    this.socket.emit("client:message", message);
+    console.log("client:message", message);
+    this.addMessage(message);
+  }
   render() {
-    console.log(this.state.messages);
     return (
       <div>
         <MessageList messages={this.state.messages} />
