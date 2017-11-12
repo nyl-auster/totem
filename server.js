@@ -9,8 +9,7 @@ io.on("connection", socket => {
   socket.on("client:message", data => {
     //console.log(`${data.username}: ${data.message}`);
     // message received from client, now broadcast it to everyone else
-    // socket.broadcast.emit("server:message", data);
-    socket.emit("server:message", data);
+    socket.broadcast.emit("server:message", data);
   });
 
   socket.on("disconnect", () => {
