@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import MessageList from "../components/MessageList";
 import MessageForm from "../components/MessageForm";
-import messages from "../data/messages";
 import io from "socket.io-client";
 
 class Chat extends Component {
@@ -13,7 +12,7 @@ class Chat extends Component {
     };
 
     // connect to our chat server
-    this.socket = io("http://localhost:8000", {
+    this.socket = io("https://localhost:8000", {
       query: `username=${props.userName}`
     }).connect();
 
