@@ -12,7 +12,7 @@ class Chat extends Component {
     };
 
     // connect to our chat server
-    this.socket = io("https://totem-api.now.sh:8000", {
+    this.socket = io("http://localhost:8000", {
       query: `username=${props.userName}`
     }).connect();
 
