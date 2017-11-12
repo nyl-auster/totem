@@ -9,11 +9,6 @@ class MessageForm extends React.Component {
       message: ""
     };
   }
-  sendMessage(message) {
-    console.log(this.props.socket);
-    this.props.socket.emit("message", message);
-  }
-
   handleChange(event) {
     this.setState({
       count: this.countMax - event.target.value.length,
@@ -21,7 +16,7 @@ class MessageForm extends React.Component {
     });
   }
   handleClick(event) {
-    this.sendMessage(this.state.message);
+    this.props.onMessageSended(this.state.message);
     this.setState(function(prevState, props) {
       return {
         message: "",

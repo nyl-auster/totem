@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import MessageList from "../components/MessageList";
-import MessageForm from "../components/MessageForm";
-import RendezVous from "../components/RendezVous";
 import ShareDiscussionLink from "../components/ShareDiscussionLink";
 import Layout from "../components/Layout";
-import messages from "../data/messages";
+import Chat from "../components/Chat";
 
 class DiscussionPage extends Component {
   render() {
@@ -13,8 +10,7 @@ class DiscussionPage extends Component {
       <Layout>
         <div style={{ maxWidth: "800px", margin: "auto" }}>
           <ShareDiscussionLink discussionId={discussionId} />
-          <MessageList messages={messages} />
-          <MessageForm />
+          <Chat discussionId={discussionId} userName="Yann" />
         </div>
       </Layout>
     );

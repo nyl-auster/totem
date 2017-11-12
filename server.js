@@ -2,13 +2,19 @@ var app = require("express")();
 var http = require("http").Server(app);
 var io = require("socket.io")(http);
 
-app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/index.html");
-});
+io.on("connection", socket => {
+  const username = socket.handshake.query.username;
+  console.log(`${username} connected`);
 
-io.on("connection", function(socket) {
-  socket.on("chat message", function(msg) {
-    io.emit("chat message", msg);
+  socket.on("client:message", data => {
+    //console.log(`${data.username}: ${data.message}`);
+    // message received from client, now broadcast it to everyone else
+    // socket.broadcast.emit("server:message", data);
+    socket.emit("server:message", data);
+  });
+
+  socket.on("disconnect", () => {
+    console.log(`${username} disconnected`);
   });
 });
 
