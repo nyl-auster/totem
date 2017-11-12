@@ -8,6 +8,9 @@ class Chat extends Component {
   socket = {};
   constructor(props) {
     super(props);
+    this.state = {
+      messages: []
+    };
 
     // connect to our chat server
     this.socket = io("http://localhost:8000", {
@@ -21,11 +24,17 @@ class Chat extends Component {
   }
   sendMessage(message) {
     this.socket.emit("client:message", message);
+    this.setState((prevState, props) => {
+      return {
+        messages: [...prevState.messages, message]
+      };
+    });
   }
   render() {
+    console.log(this.state.messages);
     return (
       <div>
-        <MessageList messages={messages} />
+        <MessageList messages={this.state.messages} />
         <MessageForm onMessageSended={message => this.sendMessage(message)} />
       </div>
     );
