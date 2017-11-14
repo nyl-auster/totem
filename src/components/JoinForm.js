@@ -1,8 +1,14 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 class JoinForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: ""
+    };
+  }
+
   renderEmailField() {
     return (
       <div className="field">
@@ -33,11 +39,33 @@ class JoinForm extends Component {
     );
   }
 
-  renderPseudoField() {
+  handleChangeUserNameField(event) {
+    this.setState({
+      userName: event.target.value
+    });
+  }
+
+  onClickHandle() {
+    this.props.history.replace({
+      pathname: `/discussion/${this.props.discussionId}`,
+      state: {
+        userName: this.state.userName
+      }
+    });
+  }
+
+  renderUserNameField() {
     return (
       <div className="field">
         <div className="control has-icons-left has-icons-right">
-          <input className="input is-large" type="text" placeholder="pseudo" />
+          {this.state.pseudo}
+          <input
+            value={this.state.userName}
+            onChange={e => this.handleChangeUserNameField(e)}
+            className="input is-large"
+            type="text"
+            placeholder="Nom"
+          />
           <span className="icon is-left">
             <i className="fa fa-user" />
           </span>
@@ -52,14 +80,16 @@ class JoinForm extends Component {
       <div className="has-text-centered">
         <div style={{ width: "400px" }} className="container">
           {!invite ? this.renderEmailField() : ""}
-          {this.renderPseudoField()}
+          {this.renderUserNameField()}
           {!invite ? this.renderSubjectField() : ""}
           <br />
-          <Link to={`/discussion/${discussionId}`}>
-            <div style={{ fontSize: "1.6rem" }} className="button is-primary">
-              {invite ? "REJOINDRE LE TOTEM" : "LANCER UN TOTEM"}
-            </div>
-          </Link>
+          <div
+            onClick={() => this.onClickHandle()}
+            style={{ fontSize: "1.6rem" }}
+            className="button is-primary"
+          >
+            {invite ? "REJOINDRE LE TOTEM" : "LANCER UN TOTEM"}
+          </div>
         </div>
       </div>
     );

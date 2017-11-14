@@ -30,9 +30,13 @@ class Chat extends Component {
     });
   }
   sendMessage(message) {
-    this.socket.emit("client:message", message);
-    console.log("client:message", message);
-    this.addMessage(message);
+    const data = {
+      userName: this.props.userName,
+      message: message
+    };
+    this.socket.emit("client:message", data);
+    console.log("client:message", data);
+    this.addMessage(data);
   }
   render() {
     return (
