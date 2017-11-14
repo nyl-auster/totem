@@ -42,7 +42,10 @@ class Chat extends Component {
     return (
       <div>
         <MessageList messages={this.state.messages} />
-        <MessageForm onMessageSended={message => this.sendMessage(message)} />
+        <MessageForm
+          userName={this.props.userName}
+          onMessageSended={message => this.sendMessage(message)}
+        />
       </div>
     );
   }

@@ -15,7 +15,7 @@ class InvitePage extends Component {
         <h1 className="section title is-1 has-text-centered">
           Rejoindre un Totem en cours
         </h1>
-        <JoinForm invite="true" discussionId={discussionId} />
+        <JoinForm {...this.props} invite="true" discussionId={discussionId} />
       </div>
     );
   }

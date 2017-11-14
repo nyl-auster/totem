@@ -37,6 +37,9 @@ class MessageForm extends React.Component {
             {this.state.count}
           </span>
         </div>
+        <div>
+          <strong>{this.props.userName}</strong>
+        </div>
         <textarea
           value={this.state.message}
           onChange={this.handleChange.bind(this)}
