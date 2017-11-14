@@ -12,5 +12,4 @@ Then install totem :
 npm install
 npm start
 
-app is running on : http://localhost:3001
-because Totem server runs on port 3000
+app is running on : http://localhost:3000
