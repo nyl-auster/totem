@@ -10,14 +10,18 @@ class DiscussionPage extends Component {
     const userName = this.props.location.state
       ? this.props.location.state.userName
       : "Unknown";
+    const subject = this.props.location.state
+      ? this.props.location.state.subject
+      : "Subject unknown";
     return (
       <Layout>
-        <div style={{ maxWidth: "800px", margin: "auto" }}>
-          <ShareDiscussionLink {...this.props} discussionId={discussionId} />
-          <div className="section">
-            <TotemRules />
-          </div>
-          <Chat discussionId={discussionId} userName={userName} />
+        <ShareDiscussionLink {...this.props} discussionId={discussionId} />
+        <br />
+        <h2 className="title is-2">{subject}</h2>
+        <Chat discussionId={discussionId} userName={userName} />
+
+        <div className="section">
+          <TotemRules />
         </div>
       </Layout>
     );

@@ -107,16 +107,14 @@ class JoinForm extends Component {
   }
 
   onClickHandle() {
-    this.props.history.replace({
+    this.props.history.push({
       pathname: `/discussion/${this.props.discussionId}`,
-      state: {
-        userName: this.state.userName
-      }
+      state: { ...this.state }
     });
   }
 
   render() {
-    const { discussionId, invite } = this.props;
+    const { invite } = this.props;
     let buttonAttributes = {};
     if (!this.formIsvalid()) {
       buttonAttributes = { disabled: true };
