@@ -6,7 +6,9 @@ const ShareDiscussionLink = ({ discussionId }) => {
   return (
     <div className="has-text-centered">
       <em>
-        <a href={path}>https://totem.now.sh{path}</a>
+        Inviter quelqu'un à se joindre à cette discussion <br />
+        {process.env.REACT_APP_DOMAIN_NAME}
+        {path}
       </em>
     </div>
   );

@@ -13,7 +13,7 @@ class Chat extends Component {
     };
 
     // connect to our chat server
-    this.socket = io(process.env.REACT_APP_API_SERVER, {
+    this.socket = io(process.env.REACT_APP_API_URL, {
       query: `username=${props.userName}`
     }).connect();
 
