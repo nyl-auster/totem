@@ -5,15 +5,34 @@ class JoinForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: ""
+      email: "",
+      userName: "",
+      subject: ""
     };
+  }
+
+  emailIsValid() {
+    return this.state.email.indexOf("@") !== -1;
+  }
+
+  userNameIsValid() {
+    return this.state.userName.trim().length > 0;
+  }
+
+  subjectIsValid() {
+    return this.state.subject.trim().length > 0;
   }
 
   renderEmailField() {
     return (
       <div className="field">
         <div className="control has-icons-left has-icons-right">
-          <input className="input is-large" type="email" placeholder="Email" />
+          <input
+            onChange={e => this.handleChangeEmailField(e)}
+            className="input is-large"
+            type="email"
+            placeholder="Email"
+          />
           <span className="icon is-left">
             <i className="fa fa-envelope" />
           </span>
@@ -22,11 +41,21 @@ class JoinForm extends Component {
     );
   }
 
+  formIsvalid() {
+    if (this.props.invite) {
+      return this.userNameIsValid();
+    }
+    const isValid =
+      this.emailIsValid() && this.subjectIsValid() && this.userNameIsValid();
+    return isValid;
+  }
+
   renderSubjectField() {
     return (
       <div className="field">
         <div className="control has-icons-left has-icons-right">
           <input
+            onChange={e => this.handleChangeSubjectField(e)}
             className="input is-large"
             type="text"
             placeholder="Sujet de la discussion"
@@ -65,6 +94,18 @@ class JoinForm extends Component {
     });
   }
 
+  handleChangeEmailField(event) {
+    this.setState({
+      email: event.target.value
+    });
+  }
+
+  handleChangeSubjectField(event) {
+    this.setState({
+      subject: event.target.value
+    });
+  }
+
   onClickHandle() {
     this.props.history.replace({
       pathname: `/discussion/${this.props.discussionId}`,
@@ -76,20 +117,25 @@ class JoinForm extends Component {
 
   render() {
     const { discussionId, invite } = this.props;
+    let buttonAttributes = {};
+    if (!this.formIsvalid()) {
+      buttonAttributes = { disabled: true };
+    }
     return (
       <div className="has-text-centered">
         <div style={{ width: "400px" }} className="container">
+          {!invite ? this.renderSubjectField() : ""}
           {!invite ? this.renderEmailField() : ""}
           {this.renderUserNameField()}
-          {!invite ? this.renderSubjectField() : ""}
           <br />
-          <div
+          <button
             onClick={() => this.onClickHandle()}
             style={{ fontSize: "1.6rem" }}
             className="button is-primary"
+            {...buttonAttributes}
           >
             {invite ? "REJOINDRE LE TOTEM" : "LANCER UN TOTEM"}
-          </div>
+          </button>
         </div>
       </div>
     );
