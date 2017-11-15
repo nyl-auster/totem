@@ -23,6 +23,15 @@ class JoinForm extends Component {
     return this.state.subject.trim().length > 0;
   }
 
+  formIsvalid() {
+    if (this.props.invite) {
+      return this.userNameIsValid();
+    }
+    const isValid =
+      this.emailIsValid() && this.subjectIsValid() && this.userNameIsValid();
+    return isValid;
+  }
+
   renderEmailField() {
     return (
       <div className="field">
@@ -39,15 +48,6 @@ class JoinForm extends Component {
         </div>
       </div>
     );
-  }
-
-  formIsvalid() {
-    if (this.props.invite) {
-      return this.userNameIsValid();
-    }
-    const isValid =
-      this.emailIsValid() && this.subjectIsValid() && this.userNameIsValid();
-    return isValid;
   }
 
   renderSubjectField() {
@@ -106,7 +106,7 @@ class JoinForm extends Component {
     });
   }
 
-  onClickHandle() {
+  submitForm() {
     this.props.history.push({
       pathname: `/discussion/${this.props.discussionId}`,
       state: { ...this.state }
@@ -122,12 +122,12 @@ class JoinForm extends Component {
     return (
       <div className="has-text-centered">
         <div style={{ width: "400px" }} className="container">
-          {!invite ? this.renderSubjectField() : ""}
-          {!invite ? this.renderEmailField() : ""}
+          {!invite && this.renderSubjectField()}
+          {!invite && this.renderEmailField()}
           {this.renderUserNameField()}
           <br />
           <button
-            onClick={() => this.onClickHandle()}
+            onClick={() => this.submitForm()}
             style={{ fontSize: "1.6rem" }}
             className="button is-primary"
             {...buttonAttributes}
