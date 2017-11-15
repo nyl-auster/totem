@@ -39,21 +39,6 @@ class JoinForm extends Component {
     );
   }
 
-  handleChangeUserNameField(event) {
-    this.setState({
-      userName: event.target.value
-    });
-  }
-
-  onClickHandle() {
-    this.props.history.replace({
-      pathname: `/discussion/${this.props.discussionId}`,
-      state: {
-        userName: this.state.userName
-      }
-    });
-  }
-
   renderUserNameField() {
     return (
       <div className="field">
@@ -72,6 +57,21 @@ class JoinForm extends Component {
         </div>
       </div>
     );
+  }
+
+  handleChangeUserNameField(event) {
+    this.setState({
+      userName: event.target.value
+    });
+  }
+
+  onClickHandle() {
+    this.props.history.replace({
+      pathname: `/discussion/${this.props.discussionId}`,
+      state: {
+        userName: this.state.userName
+      }
+    });
   }
 
   render() {

@@ -5,6 +5,7 @@ import io from "socket.io-client";
 
 class Chat extends Component {
   socket = {};
+
   constructor(props) {
     super(props);
     this.state = {
@@ -18,10 +19,11 @@ class Chat extends Component {
 
     // Listen for messages from the server
     this.socket.on("server:message", message => {
-      console.log("server:message", message);
+      console.log("get message from the server", message);
       this.addMessage(message);
     });
   }
+
   addMessage(message) {
     this.setState((prevState, props) => {
       return {
@@ -32,10 +34,11 @@ class Chat extends Component {
   sendMessage(message) {
     const data = {
       userName: this.props.userName,
-      message: message
+      message: message,
+      room: this.room
     };
     this.socket.emit("client:message", data);
-    console.log("client:message", data);
+    console.log("client emits message", data);
     this.addMessage(data);
   }
   render() {
