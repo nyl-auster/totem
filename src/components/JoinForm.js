@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { generateRandomId } from "../lib/totem";
 
 class JoinForm extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
+    this.discussionId = null;
     this.state = {
       email: "",
       userName: "",
@@ -107,8 +110,11 @@ class JoinForm extends Component {
   }
 
   submitForm() {
+    const discussionId = this.props.match.params.discussionId
+      ? this.props.match.params.discussionId
+      : generateRandomId(this.state.email);
     this.props.history.push({
-      pathname: `/discussion/${this.props.discussionId}`,
+      pathname: `/discussion/${discussionId}`,
       state: { ...this.state }
     });
   }
@@ -139,9 +145,5 @@ class JoinForm extends Component {
     );
   }
 }
-
-JoinForm.PropTypes = {
-  discussionId: PropTypes.string.isRequired
-};
 
 export default JoinForm;

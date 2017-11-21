@@ -9,13 +9,12 @@ const style = {
 
 class InvitePage extends Component {
   render() {
-    const discussionId = this.props.match.params.discussionId;
     return (
       <div style={style}>
         <h1 className="section title is-1 has-text-centered">
           Rejoindre un Totem en cours
         </h1>
-        <JoinForm {...this.props} invite="true" discussionId={discussionId} />
+        <JoinForm {...this.props} invite="true" />
       </div>
     );
   }

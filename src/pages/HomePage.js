@@ -18,7 +18,7 @@ class HomePage extends Component {
         >
           TOTEM
         </h1>
-        <JoinForm {...this.props} discussionId={generateRandomId()} />
+        <JoinForm {...this.props} />
       </div>
     );
   }

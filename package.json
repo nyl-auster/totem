@@ -9,13 +9,12 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
+    "sha1": "^1.1.1",
     "socket.io-client": "^2.0.4"
   },
   "scripts": {
-    "dev":
-      "REACT_APP_DOMAIN_NAME=\"http://localhost:3000\" REACT_APP_API_URL=\"http://localhost:4000/\" npm run start-react",
-    "start":
-      "REACT_APP_DOMAIN_NAME=\"https://totem.now.sh\" REACT_APP_API_URL=\"https://totem-api.now.sh/\" npm run start-react",
+    "dev": "REACT_APP_DOMAIN_NAME=\"http://localhost:3000\" REACT_APP_API_URL=\"http://localhost:4000/\" npm run start-react",
+    "start": "REACT_APP_DOMAIN_NAME=\"https://totem.now.sh\" REACT_APP_API_URL=\"https://totem-api.now.sh/\" npm run start-react",
     "start-react": "PORT=3000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
