@@ -8,6 +8,7 @@ class Chat extends Component {
 
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       messages: []
     };
@@ -16,6 +17,8 @@ class Chat extends Component {
     this.socket = io(process.env.REACT_APP_API_URL, {
       query: `username=${props.userName}`
     }).connect();
+
+    this.socket.emit("client:join", { room: props.discussionId });
 
     // Listen for messages from the server
     this.socket.on("server:message", message => {
