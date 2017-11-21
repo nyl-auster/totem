@@ -40,7 +40,7 @@ class Chat extends Component {
     const data = {
       userName: this.props.userName,
       message: message,
-      room: this.room
+      room: this.props.discussionId
     };
     this.socket.emit("client:message", data);
     console.log("client emits message", data);
