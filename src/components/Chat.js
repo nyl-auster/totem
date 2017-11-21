@@ -18,7 +18,9 @@ class Chat extends Component {
       query: `username=${props.userName}`
     }).connect();
 
-    this.socket.emit("client:join", { room: props.discussionId });
+    this.socket.on("connect", () => {
+      this.socket.emit("client:join", { room: props.discussionId });
+    });
 
     // Listen for messages from the server
     this.socket.on("server:message", message => {
